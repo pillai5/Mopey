@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
-  
   },
   "author": "",
   "license": "ISC",
@@ -14,8 +13,11 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "firebase": "^5.9.4",
+    "googleapis": "^39.2.0",
     "mongoose": "^5.5.1",
-    "node-pre-gyp": "^0.12.0"
+    "node-pre-gyp": "^0.12.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^2.0.0"
   },
   "engines": {
     "node": "10.15.3",
