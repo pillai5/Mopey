@@ -7,12 +7,24 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const auth = require('./auth');
 const path = require('path');
+//const session = require('express-session');
+
 mongoose.connect('mongodb://localhost/mopey')
     .then(() => console.log('Connected to MongoDB...'))
     .catch(err => console.log('Could not connect to MongoDB'));
 
 
+/*const sessionConfig = {
+        resave: false,
+        saveUninitialized: false,
+        secret: '9yQcV5YyVhO9GBN9S1ZNe4G-',
+        signed: true,
+        store: new DatastoreStore({
+          dataset: new Datastore({kind: 'express-sessions'}),
+        }),
+};
 
+app.use(session(sessionConfig));*/
 app.use( express.static(__dirname + '/public' ));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -23,19 +35,24 @@ app.use(express.urlencoded({extended: true}));
 //app.use('/login', login);
 //app.use('/', home);
 app.use('/auth/google', auth);
-//auth(passport);
-
+app.use('/home', home);
 
 app.get('/', (req,res)=> {
-    res.json({
-        status: 'session cookie not set'
-    });
+    console.log('currently the user is ' + auth.username);
+    const homepage = './home'
+    if (auth.username)  {
+        res.redirect(homepage);
+    }
+    else {
+        res.redirect('./login');
+    }
+    //res.redirect('./routers/home');
 })
 
 app.get('/login', (req,res)=> {
-
      res.sendFile(path.join(__dirname, './public','login.html'))
 })
+
 
 
 //const schema = new mongoose.Scheme({})
