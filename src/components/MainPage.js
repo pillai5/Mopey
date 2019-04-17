@@ -1,45 +1,43 @@
-
-//DOM- Document object model
-const notes=[{
-    title: "my next trip",
-    body:" wanna go to spain"},
-{title:'habits to work on',
-body:'sleep early'
+const notes = [{
+    title: 'my next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'CS 252 ',
+    body: 'I hate this class.'
+}, {
+    title: 'note 3',
+    body: 'just did my homework'
 }]
-const filters={
-    searchText:''
+
+const filters = {
+    searchText: ''
 }
 
-const renderNotes=function(notes,filters){
-const filteredNotes=notes.filter(function(note){
-    return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-})
+const renderNotes = function (notes, filters) {
+    const filteredNotes = notes.filter(function (note) {
+        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
 
-document.querySelector('#notes').innerHTML=''
-filteredNotes.forEach(function(item){
-    const noteEl=document.createElement('p')
-    noteEl.textContent=item.title
-    document.querySelector('#notes').appendChild(noteEl)
-})
+    document.querySelector('#notes').innerHTML = ''
+    
+    filteredNotes.forEach(function (note) {
+        const noteEl = document.createElement('p')
+        noteEl.textContent = note.title
+        document.querySelector('#notes').appendChild(noteEl)
+    })
 }
 
-renderNotes(notes,filters)
+renderNotes(notes, filters)
 
-document.querySelector('#create').addEventListener('click',function(e){
-    console.log('did this work')
-    console.log(e)
-    e.target.textContent='clicked'
+document.querySelector('#create-note').addEventListener('click', function (e) {
+    e.target.textContent = 'The button was clicked'
 })
 
-document.querySelector('#search-text').addEventListener('input',function(e){
-filters.searchText=e.target.value;
-renderNotes(notes,filters)
+document.querySelector('#search-text').addEventListener('input', function (e) {
+    filters.searchText = e.target.value
+    renderNotes(notes, filters)
 })
-//change event- enter key has to be pressed
-// input event- filters real-time
-document.querySelector('#label-checkbox').addEventListener('change',function(e){
-    console.log(e.target.checked)
-})
-document.querySelector("#filter-notes").addEventListener('change',function(e){
+
+document.querySelector('#filter-by').addEventListener('change', function (e) {
     console.log(e.target.value)
 })
