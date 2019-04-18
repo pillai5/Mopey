@@ -4,8 +4,7 @@ const router = express.Router();
 const passport = require('passport');
 var userid;
 var username;
-var firstName;
-var lastName;
+var displayName;
 router.use(passport.initialize());
 router.use(passport.session());
 
@@ -15,12 +14,11 @@ passport.use(new GoogleStrategy({
     callbackURL: 'http://localhost:3000/auth/google/callback'
 },
 (token, refreshToken, profile, done) => {
-    console.log('Our user authenticated with Google, and Google sent us back this profile info identifying the authenticated user with id:', profile.id);
-    console.log('Our user is named: ', profile.displayName);
+    //console.log('Our user authenticated with Google, and Google sent us back this profile info identifying the authenticated user with id:', profile.id);
+    //console.log('Our user is named: ', profile.firstName);
     userid = profile.id;
     username = profile.displayName;
-    firstName = profile.firstName;
-    lastName = profile.lastName;
+    displayName = profile.displayName;
     return done(null, {
         profile: profile,
         token: token
@@ -49,11 +47,10 @@ router.get('/',
 
 router.get('/callback', passport.authenticate('google'), (req, res) => {
     console.log('wooo we authenticated, here is our user object:',);
-    console.log('userid is ' + userid);
+    //console.log('userid is ' + userid);
     module.exports.username = username;
     module.exports.userid = userid;
-    module.exports.firstname = firstName;
-    module.exports.lastname = lastName;
+    module.exports.displayName = displayName;
     res.redirect('/');
 });
 
