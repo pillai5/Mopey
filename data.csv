@@ -2,3 +2,4 @@ Name,UserID,Mood,MoodNum,Text
 Bob,1234,Happy,5,I like pie.
 Amy,2345,Sad,1,I want to die.
 Dan,3456,Nervous,3,I am going to fail all my classes.
+Bob,1234,Sad,1,I have no more pie.
