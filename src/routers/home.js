@@ -45,7 +45,7 @@ function createUser() {
             console.log('this user already exists');
         }
         if (check===0) {
-            console.log('adding to database');
+            //console.log('adding to database');
             newUser.save((err, user) => {
                 if (err) return console.error(err);
             });
