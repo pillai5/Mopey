@@ -31,15 +31,20 @@ app.use(express.urlencoded({extended: true}));
 //app.use('/:userID', users);
 //app.use('/login', login);
 //app.use('/', home);
+
 app.use('/auth/google', auth);
 app.use('/home', home);
 
 app.use('/login', login);
+
+app.get('/logout', (req,res) => {
+    res.redirect('./auth/google/logout');
+});
 app.get('/', (req,res)=> {
     console.log('currently the user is ' + auth.username);
     const homepage = './home'
     if (auth.username)  {
-        res.redirect(homepage);
+        res.redirect('./home');
     }
     else {
         res.redirect('./login');
