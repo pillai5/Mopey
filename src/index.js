@@ -9,8 +9,6 @@ const auth = require('./auth');
 const path = require('path');
 //const session = require('express-session');
 
-
-
 /*const sessionConfig = {
         resave: false,
         saveUninitialized: false,
@@ -42,7 +40,6 @@ app.get('/logout', (req,res) => {
 });
 app.get('/', (req,res)=> {
     console.log('currently the user is ' + auth.username);
-    const homepage = './home'
     if (auth.username)  {
         res.redirect('./home');
     }
@@ -53,11 +50,6 @@ app.get('/', (req,res)=> {
 })
 
 
-
-
-
-//const schema = new mongoose.Scheme({})
-//
 const port = process.env.PORT ||  3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

@@ -20,8 +20,6 @@ require('firebase/database');
 router.use( express.static(__dirname + '/public' ));
 
 router.get('/', (req,res)=> {
-  console.log('login: ' + path.join(__dirname, '../public','login.html'));
-   
   res.sendFile(path.join(__dirname, '../public','login.html'))
 })
 

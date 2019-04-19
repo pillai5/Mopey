@@ -57,7 +57,7 @@ function createUser() {
 
 router.get('/', (req, res) => {
     //console.log('home: ' + path.join(__dirname, '../public','MainPage.html'));
-    res.sendFile(path.join(__dirname, '../public', 'index.html'))
+    res.sendFile(path.join(__dirname, '../public', 'homepage.html'))
     console.log('Username: ' + auth.username);
     console.log('Userid: ' + auth.userid);
     createUser();
