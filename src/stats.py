@@ -8,7 +8,9 @@ from ibm_watson import ToneAnalyzerV3
 
 if __name__ == '__main__':
 
-    client=MongoClient()
+    client=MongoClient('mongodb://sruthip:mopeypass1@ds133166.mlab.com:33166/mopey')
+    db=client['mopey']
+    collection=db['mopey']
 
     analyzer=ToneAnalyzerV3(version='2017-09-21',iam_apikey='0jo9KTyE-iEs9tCMlGjxsyxCXe1AIWHJVsLaGEc68wNj',url='https://gateway.watsonplatform.net/tone-analyzer/api')
 
