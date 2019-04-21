@@ -5,59 +5,71 @@ const mongoose = require('mongoose');
 const db = mongoose.connection;
 const userCollection = db.collection('users');
 const path = require('path');
+var User = require('../models/Users.js');
+var Promise = require('promise');
+var check;
+mongoose.connect('mongodb://sruthip:mopeypass1@ds133166.mlab.com:33166/mopey')
+    .then(() => console.log('connection succesful'))
+    .catch((err) => console.error(err));
 
-//mongoose.connect('mongodb://localhost/mopey')
-router.use( express.static(__dirname + '/public' ));
+router.use(express.static(__dirname + '/public'));
 
-router.get('/', (req, res) => {
-    console.log('home: ' + path.join(__dirname, '../public','MainPage.html'));
-    res.sendFile(path.join(__dirname, '../public','MainPage.html'))
-    //res.write('Username: ' + auth.username);
-    //res.write('\nUserid: ' + auth.userid);
-    console.log('printing home page');
-    //res.end();
-})
-
-const userSchema = new mongoose.Schema({
-    userId: Number,
-    name: {
-        firstName: String,
-        lastName: String,
-    }
-});
-
-
-const User = mongoose.model('User', userSchema);
-
-function checkIfUserExists(userid) {
-    if (userCollection.find({ userId: { $exists: true, $eq: userid } })) {
-        return true;
-    }
-    return false;
-}
-
-async function createUser() {
-    const user = new User({
-        userId: auth.userId,
-        name: {
-            firstName: auth.firstName,
-            lastName: auth.lastName
+function checkIfUserExists(userid, callback) {
+        User.find({ userId: userid }, function(err,user) {
+        if (err) {
+            throw err;
+        }
+        if (user.length===0) {           
+            callback(0);
+        }
+        if (user.length > 0) {
+            callback(1); 
         }
     });
-    console.log('HELLO I A MHERE');
-    if (checkIfUserExists) {
-        console.log('this user alreayd exists');
-    }
-    else {
-        console.log('adding to database');
-        const result = await user.save();
-        console.log(result);
-    }
+};
+function getCheck(check) {
+    return check;
 }
 
-//createUser();
+function createUser() {
+    console.log('.userid: ' + auth.userid);
+    console.log('.name: ' + auth.displayName);
+    const newUser = new User({
+        userId: auth.userid,
+        displayName: auth.displayName,
 
+    });
+    const yeet = checkIfUserExists(auth.userid, function(check) {
+        console.log('check:' + check);
+        if (check===1) {
+            console.log('this user already exists');
+        }
+        if (check===0) {
+            //console.log('adding to database');
+            newUser.save((err, user) => {
+                if (err) return console.error(err);
+            });
+    
+        }
+    })
+}
+    
 
+router.get('/', (req, res) => {
+    //console.log('home: ' + path.join(__dirname, '../public','MainPage.html'));
+    res.sendFile(path.join(__dirname, '../public', 'homepage.html'))
+    console.log('Username: ' + auth.username);
+    console.log('Userid: ' + auth.userid);
+    createUser();
+})
+
+router.get('/all',(req, res) => {
+    //console.log('home: ' + path.join(__dirname, '../public','MainPage.html'));
+    User.find({},function(err, users) {
+        if (err) throw err;
+        res.json(users);
+    });
+})
 
 
 
