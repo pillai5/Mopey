@@ -2,6 +2,7 @@ var newEntry = document.getElementById( 'newEntry' );
 var btn = document.getElementById( 'add-entry' );
 var nTaskPlace = document.getElementById( 'main' );
 
+
 var AddEntry = function() {
    
     var paragraph = document.createElement( 'p' );
@@ -37,4 +38,15 @@ var AddEntry = function() {
     newEntry.value = '';
     nTaskPlace.appendChild( containerDiv, nTaskPlace.firstChild );
 }
+var newDropDown= function(){
+   var date=document.getElementById('dates-dropdown');
+   var newDate=document.createElement('option');
+   newDate.value="new date";
+   date.appendChild(newDate);
+
+}
 btn.addEventListener( 'click', AddEntry );
+btn.addEventListener('click', newDropDown);
+
+   
+
