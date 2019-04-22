@@ -12,7 +12,7 @@ const notes = [{
 const filters = {
     searchText: ''
 }
-
+router.use(express.static(__dirname + '/'));
 const renderNotes = function (notes, filters) {
     const filteredNotes = notes.filter(function (note) {
         return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
@@ -40,4 +40,11 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
 
 document.querySelector('#filter-by').addEventListener('change', function (e) {
     console.log(e.target.value)
+})
+router.get('/home', (req, res) => {
+    //console.log('home: ' + path.join(__dirname, '../public','MainPage.html'));
+    res.sendFile(path.join(__dirname, './index.html'))
+    //console.log('Username: ' + auth.username);
+  //  console.log('Userid: ' + auth.userid);
+   // createUser();
 })
