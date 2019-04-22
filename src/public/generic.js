@@ -1,14 +1,16 @@
-var newtask = document.getElementById( 'newEntry' );
+var newEntry = document.getElementById( 'newEntry' );
 var btn = document.getElementById( 'add-entry' );
 var nTaskPlace = document.getElementById( 'main' );
 
 var AddEntry = function() {
    
     var paragraph = document.createElement( 'p' );
-    paragraph.innerHTML = newtask.value;
+    var userEntry = newEntry.value; //this is the user's entry
+    console.log(userEntry)
+    paragraph.innerHTML = newEntry.value;
     var editInput = document.createElement( 'input' );
     editInput.style.display= 'none';
-    editInput.value = newtask.value;
+    editInput.value = newEntry.value;
     var btnEdit = document.createElement( 'button' );
     btnEdit.innerHTML = 'Edit';
     var btnSave = document.createElement( 'button' );
@@ -32,7 +34,7 @@ var AddEntry = function() {
     containerDiv.appendChild( editInput );
     containerDiv.appendChild( btnEdit );
     containerDiv.appendChild( btnSave );
-    newtask.value = '';
+    newEntry.value = '';
     nTaskPlace.appendChild( containerDiv, nTaskPlace.firstChild );
 }
 btn.addEventListener( 'click', AddEntry );
