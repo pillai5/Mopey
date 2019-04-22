@@ -38,10 +38,12 @@ var AddEntry = function() {
     newEntry.value = '';
     nTaskPlace.appendChild( containerDiv, nTaskPlace.firstChild );
 }
+var count=00;
 var newDropDown= function(){
+   count++;
    var date=document.getElementById('dates-dropdown');
    var newDate=document.createElement('option');
-   newDate.value="new date";
+   newDate.innerHTML="January "+count+" 2019";
    date.appendChild(newDate);
 
 }
