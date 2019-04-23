@@ -47,15 +47,19 @@ var AddEntry = function() {
       entry: userEntry,
     }));
 }
-
+var month_names =["January","Febraury","March",
+                      "April","May","June",
+                      "July","August","September",
+                      "October","November","December"];
+    
 
 //function for getting date in DD-Mon-YY format
 Date.prototype.toShortFormat = function() {
 
-    var month_names =["Jan","Feb","Mar",
-                      "Apr","May","Jun",
-                      "Jul","Aug","Sep",
-                      "Oct","Nov","Dec"];
+    // month_names1 =["Jan","Feb","Mar",
+    //                   "Apr","May","Jun",
+    //                   "Jul","Aug","Sep",
+    //                   "Oct","Nov","Dec"];
     
     var day = this.getDate();
     var month_index = this.getMonth();
@@ -71,6 +75,10 @@ var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0
 var yyyy = today.getFullYear();
 console.log('TESTING: ' + month); //THIS VARIABLE STORES THE CURRENT MONTH PAGE THE USER IS ON
+var pagendex = month_names.indexOf(month) + 1;
+var currMonth = today.getMonth() + 1 ;
+//COMPARE pageindex to currmonth
+
 var newDropDown= function(){
    
 var date=document.getElementById('dates-dropdown');
