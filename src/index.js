@@ -11,8 +11,8 @@ var Promise = require('promise');
 
 var mongojs = require('mongojs');
 var db = mongojs('mongodb://sruthip:mopeypass1@ds133166.mlab.com:33166/mopey');
-
-var dates = [];
+var entries;
+var entry;
 var Journal = require('./models/Journals.js');
 mongoose.connect('mongodb://sruthip:mopeypass1@ds133166.mlab.com:33166/mopey')
 .then(() => console.log('connection succesful'))
@@ -58,11 +58,28 @@ async function getDates(month) {
             }
             dates.push(doc.date);
             console.log(doc.date);
-            // doc is a document in the collection
+            //doc is a document in the collection
         });
    
 };
 
+async function getEntries(mm,dd,yyyy) {
+    var mycollection = db.collection('journals');
+    entry = "";
+    var str = "";
+    var date =  str.concat(mm +'/' + dd +'/' + yyyy);
+    console.log(date);
+    mycollection.find({ date: date }, {entry:1, _id:0}).forEach(function(err, doc) {
+            if (!doc) {
+                // we visited all docs in the collection
+                return;
+            }
+            entry = doc.entry;
+            //console.log(doc.entry);
+    //         // doc is a document in the collection
+        });
+   
+};
 app.get('/logout', (req,res) => {
     res.redirect('./auth/google/logout');
 });
@@ -81,15 +98,15 @@ app.get('/:month', (req,res) => {
     getDates(req.params.month);  
     setTimeout(function() {
         console.log('This runs after 2 seconds');
-        res.render('january', { names : 'sruthi', dates:dates});
+        res.render(req.params.month, { names : 'sruthi', dates:dates, entry: ""});
       }, 2000);
 });
 
-app.get('/:month/:date', (req,res) => {
-    getEntries(month, date);  
+app.get('/:month/:mm/:dd/:yyyy', (req,res) => {
+    getEntries(req.params.mm,req.params.dd, req.params.yyyy );  
     setTimeout(function() {
         console.log('This runs after 2 seconds');
-        res.render('january', { names : 'sruthi', dates:dates});
+            res.render(req.params.month, { dates:dates, entry: entry});
       }, 2000);
 });
 const port = process.env.PORT ||  3000;
