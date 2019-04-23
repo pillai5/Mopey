@@ -10,7 +10,7 @@ var AddEntry = function() {
     console.log(userEntry)
     
     paragraph.innerHTML = newEntry.value;
-    
+    //EDIT STUFF
    /* var editInput = document.createElement( 'input' );
     editInput.style.display= 'none';
     editInput.value = newEntry.value;
@@ -58,9 +58,9 @@ Date.prototype.toShortFormat = function() {
 }
 
 var today = new Date();  // this gets the date
-   // showing today's format in DD-Mon-YY format
+// showing today's format in DD-Mon-YY format
 var dd = String(today.getDate()).padStart(2, '0');    
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0
 var yyyy = today.getFullYear();
 
 var newDropDown= function(){
