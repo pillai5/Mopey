@@ -52,6 +52,11 @@
 					<div id="main">
 						<div class="inner">
 							<h1 id="month">January</h1>
+							<p><ul>
+								<% dates.forEach(function(item) { %>
+									<li><%= item %></li>
+								<%});%>
+							</ul></p>
 							<select id="dates-dropdown">
 								<option value=""> Select date </option>
 								</select>
