@@ -3,16 +3,18 @@ var btn = document.getElementById( 'add-entry' );
 var nTaskPlace = document.getElementById( 'main' );
 
 
+var count=0;
 var AddEntry = function() {
-   
     var paragraph = document.createElement( 'p' );
     var userEntry = newEntry.value; //this is the user's entry
     console.log(userEntry)
+    
     paragraph.innerHTML = newEntry.value;
-    var editInput = document.createElement( 'input' );
+    
+   /* var editInput = document.createElement( 'input' );
     editInput.style.display= 'none';
     editInput.value = newEntry.value;
-    var btnEdit = document.createElement( 'button' );
+   var btnEdit = document.createElement( 'button' );
     btnEdit.innerHTML = 'Edit';
     var btnSave = document.createElement( 'button' );
     btnSave.innerHTML = 'Save';
@@ -29,23 +31,45 @@ var AddEntry = function() {
         btnSave.style.display = 'none';
         btnEdit.style.display = 'inline-block';
         paragraph.innerHTML = editInput.value;    
-    }); 
+    });   */
     var containerDiv = document.createElement( 'div' );
     containerDiv.appendChild( paragraph );
-    containerDiv.appendChild( editInput );
-    containerDiv.appendChild( btnEdit );
-    containerDiv.appendChild( btnSave );
+  // containerDiv.appendChild( editInput );
+ //  containerDiv.appendChild( btnEdit );
+ // containerDiv.appendChild( btnSave );
     newEntry.value = '';
     nTaskPlace.appendChild( containerDiv, nTaskPlace.firstChild );
 }
-var count=00;
-var newDropDown= function(){
-   count++;
-   var date=document.getElementById('dates-dropdown');
-   var newDate=document.createElement('option');
-   newDate.innerHTML="January "+count+" 2019";
-   date.appendChild(newDate);
 
+
+//function for getting date in DD-Mon-YY format
+Date.prototype.toShortFormat = function() {
+
+    var month_names =["Jan","Feb","Mar",
+                      "Apr","May","Jun",
+                      "Jul","Aug","Sep",
+                      "Oct","Nov","Dec"];
+    
+    var day = this.getDate();
+    var month_index = this.getMonth();
+    var year = this.getFullYear();
+    
+    return "" + day + "-" + month_names[month_index] + "-" + year;
+}
+
+
+
+var newDropDown= function(){
+   
+var date=document.getElementById('dates-dropdown');
+var newDate=document.createElement('option');
+var today = new Date();  // this gets the date
+   // showing today's format in DD-Mon-YY format
+console.log(today.toShortFormat());
+var entryDate=today.toShortFormat();  //this contains the date in DD-Mon-YY format
+console.log('the entrydate is '+entryDate)
+newDate.innerHTML=entryDate;
+date.appendChild(newDate);
 }
 btn.addEventListener( 'click', AddEntry );
 btn.addEventListener('click', newDropDown);
