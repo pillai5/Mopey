@@ -1,2 +1,4 @@
 
 node_modules
+.idea/workspace.xml
+src/__pycache__/monthdata.cpython-37.pyc
