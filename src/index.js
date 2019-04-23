@@ -50,8 +50,8 @@ app.use('/login', login);
 async function getDates(month) {
 
     var mycollection = db.collection('journals');
-    dates = [];
-    let promise =  new Promise((resolve, reject) => { mycollection.find({ month: month }, {date:1, _id:0}).forEach(function(err, doc) {
+    dates = []
+     mycollection.find({ month: month }, {date:1, _id:0}).forEach(function(err, doc) {
             if (!doc) {
                 // we visited all docs in the collection
                 return;
@@ -60,9 +60,7 @@ async function getDates(month) {
             console.log(doc.date);
             // doc is a document in the collection
         });
-    });
-
-    let result = await promise;
+   
 };
 
 app.get('/logout', (req,res) => {
@@ -80,12 +78,9 @@ app.get('/', (req,res)=> {
 })
 
 app.get('/january', (req,res) => {
-    getDates('January');
-
-   
+    getDates('January');  
     setTimeout(function() {
-        console.log('This runs after 5 seconds');
-        console.log(dates[1]);
+        console.log('This runs after 2 seconds');
         res.render('january', { names : 'sruthi', dates:dates});
       }, 2000);
 });
