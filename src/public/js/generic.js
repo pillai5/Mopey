@@ -1,13 +1,12 @@
 var newEntry = document.getElementById( 'newEntry' );
 var btn = document.getElementById( 'add-entry' );
 var nTaskPlace = document.getElementById( 'main' );
-
-
+var entryDate;
 var count=0;
 var AddEntry = function() {
     var paragraph = document.createElement( 'p' );
     var userEntry = newEntry.value; //this is the user's entry
-    console.log(userEntry)
+    //console.log(userEntry)
     
     paragraph.innerHTML = newEntry.value;
     //EDIT STUFF
@@ -71,21 +70,19 @@ var today = new Date();  // this gets the date
 var dd = String(today.getDate()).padStart(2, '0');    
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0
 var yyyy = today.getFullYear();
-
+console.log('TESTING: ' + month); //THIS VARIABLE STORES THE CURRENT MONTH PAGE THE USER IS ON
 var newDropDown= function(){
    
 var date=document.getElementById('dates-dropdown');
 var newDate=document.createElement('option');
 
 
-console.log(today.toShortFormat());
-var entryDate=today.toShortFormat();  //this contains the date in DD-Mon-YY format
-console.log('the entrydate is '+entryDate)
+//console.log(today.toShortFormat());
+entryDate=today.toShortFormat();  //this contains the date in DD-Mon-YY format
 newDate.innerHTML=entryDate;
 date.appendChild(newDate);
 }
 btn.addEventListener( 'click', AddEntry );
 btn.addEventListener('click', newDropDown);
 
-   
 

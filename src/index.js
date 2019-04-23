@@ -93,14 +93,16 @@ app.get('/', (req,res)=> {
     //res.redirect('./routers/home');
 })
 
+
 app.get('/:month', (req,res) => {
     getDates(req.params.month);  
     month = req.params.month;
     month = month.charAt(0).toUpperCase() + month.slice(1);
-    console.log(month);
+   // console.log(month);
     setTimeout(function() {
         console.log('This runs after 2 seconds');
         res.render('generic', { month: month, names : 'sruthi', dates:dates, entry: ""});
+    
       }, 2000);
 });
 

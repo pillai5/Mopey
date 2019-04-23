@@ -1,5 +1,5 @@
 
-   
+
 <!DOCTYPE HTML>
 <!--
 	Phantom by HTML5 UP
@@ -52,7 +52,9 @@
 					<div id="main">
 						<div class="inner">
 							<h1 id="month"><%= month%></h1>
-							
+							<script>
+								var month= <%- JSON.stringify(month) %>;
+							</script>
 							<select id="dates-dropdown">
 								<option value=""> Select date </option>
 								<% dates.forEach(function(item) { %>
@@ -99,6 +101,7 @@
 			</div>
 
 		<!-- Scripts -->
+		
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
@@ -106,6 +109,8 @@
 			<script src="assets/js/main.js"></script>
 			<!---ADDING MY JS SCRIPT-->
 			<script src="js/generic.js"></script>
+
+		
 
 	</body>
 </html>
