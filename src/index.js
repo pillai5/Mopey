@@ -48,10 +48,10 @@ app.use('/login', login);
 
 
 async function getDates(month) {
-
+    console.log(month);
     var mycollection = db.collection('journals');
     dates = []
-     mycollection.find({ month: { $regex : new RegExp(month, "i") } }, {date:1, _id:0}).forEach(function(err, doc) {
+    mycollection.find({ month: { $regex : new RegExp(month, "i") } }, {date:1, _id:0}).forEach(function(err, doc) {
             if (!doc) {
                 // we visited all docs in the collection
                 return;
@@ -60,7 +60,6 @@ async function getDates(month) {
             console.log(doc.date);
             //doc is a document in the collection
         });
-   
 };
 
 async function getEntries(mm,dd,yyyy) {
