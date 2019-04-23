@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/stats.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+            <state relative-caret-position="101">
+              <caret line="21" column="80" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
               <folding>
                 <element signature="e#1#19#0" expanded="true" />
               </folding>
@@ -60,8 +60,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="908" />
-    <option name="width" value="978" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
@@ -135,6 +135,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.53112036" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -154,7 +155,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="right" id="R Packages" order="4" />
-      <window_info active="true" anchor="right" id="Run" order="5" visible="true" weight="0.5113941" />
+      <window_info active="true" anchor="right" id="Run" order="5" visible="true" weight="0.51407504" />
     </layout>
   </component>
   <component name="editorHistoryManager">
@@ -165,8 +166,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stats.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+        <state relative-caret-position="101">
+          <caret line="21" column="80" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
           <folding>
             <element signature="e#1#19#0" expanded="true" />
           </folding>

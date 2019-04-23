@@ -19,19 +19,21 @@ if __name__ == '__main__':
     dates = []
     tones = [0, 0, 0, 0, 0, 0, 0]
 
-    tone_names=["anger", "fear", "sadness", "tentative", "joy", "analytical", "confident"]
+    tone_names=["Anger", "Fear", "Sadness", "Tentative", "Joy", "Analytical", "Confident"]
 
     for doc in collection.find():
         print("DOC:" +str(doc))
         text=doc['entry']
         print("DATE: "+str(doc['date']))
         dates.append(str(doc['date']))
-        analysis=analyzer.tone({'text':text},content_type='application/json').get_result()
+        analysis=analyzer.tone({'text': text}, content_type='application/json').get_result()
         for i in range(len(analysis['document_tone']['tones'])):
             current_tone=str(analysis['document_tone']['tones'][i]['tone_name'])
             print("TONE "+str(i)+": "+current_tone)
-            for t in tone_names:
-                if current_tone==t:
+            for t in range(len(tone_names)):
+                print(current_tone)
+                print(tone_names[t])
+                if current_tone==tone_names[t]:
                     tones[t]+=1
         if len(analysis['document_tone']['tones'])==0:
             print("TONE 0: Neutral")
@@ -46,7 +48,7 @@ if __name__ == '__main__':
 
     chart=pygal.Radar()
     chart.title="Mood over Time"
-    chart.x_labels=dates
-    chart.add("Mood",tones)
+    chart.x_labels=tone_names
+    chart.add("Mood", tones)
 
-    chart.render_to_png('chart.png')
+    chart.render_to_file('chart.svg')
