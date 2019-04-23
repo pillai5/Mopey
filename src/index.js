@@ -7,33 +7,61 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const auth = require('./auth');
 const path = require('path');
-//const session = require('express-session');
+var Promise = require('promise');
 
-/*const sessionConfig = {
-        resave: false,
-        saveUninitialized: false,
-        secret: '9yQcV5YyVhO9GBN9S1ZNe4G-',
-        signed: true,
-        store: new DatastoreStore({
-          dataset: new Datastore({kind: 'express-sessions'}),
-        }),
-};
+var mongojs = require('mongojs');
+var db = mongojs('mongodb://sruthip:mopeypass1@ds133166.mlab.com:33166/mopey');
 
-app.use(session(sessionConfig));*/
+var dates = [];
+var Journal = require('./models/Journals.js');
+mongoose.connect('mongodb://sruthip:mopeypass1@ds133166.mlab.com:33166/mopey')
+.then(() => console.log('connection succesful'))
+.catch((err) => console.error(err));
+
+
+
+function createEntry(currdate, currentry) {
+    console.log('.userid: ' + auth.userid);
+    console.log('.date ' + currdate);
+    console.log('.entry: ' + currentry);
+    const newJournal= new Journal({
+    userId: auth.userid,
+    date: currdate,
+    entry: currentry
+});
+
+// newUser.save((err, user) => {
+// if (err) return console.error(err);
+// });
+}
+
 app.use( express.static(__dirname + '/public' ));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine','ejs');
-//app.engine('html', require('ejs').renderFile);
-//app.use('/:userID', users);
-//app.use('/login', login);
-//app.use('/', home);
+app.set("view engine","ejs");
+app.set('views', path.join(__dirname, 'views'));
 
 app.use('/auth/google', auth);
 app.use('/home', home);
-
 app.use('/login', login);
+
+
+
+async function getDates(month) {
+
+    var mycollection = db.collection('journals');
+    dates = []
+     mycollection.find({ month: { $regex : new RegExp(month, "i") } }, {date:1, _id:0}).forEach(function(err, doc) {
+            if (!doc) {
+                // we visited all docs in the collection
+                return;
+            }
+            dates.push(doc.date);
+            console.log(doc.date);
+            // doc is a document in the collection
+        });
+   
+};
 
 app.get('/logout', (req,res) => {
     res.redirect('./auth/google/logout');
@@ -49,7 +77,21 @@ app.get('/', (req,res)=> {
     //res.redirect('./routers/home');
 })
 
+app.get('/:month', (req,res) => {
+    getDates(req.params.month);  
+    setTimeout(function() {
+        console.log('This runs after 2 seconds');
+        res.render('january', { names : 'sruthi', dates:dates});
+      }, 2000);
+});
 
+app.get('/:month/:date', (req,res) => {
+    getEntries(month, date);  
+    setTimeout(function() {
+        console.log('This runs after 2 seconds');
+        res.render('january', { names : 'sruthi', dates:dates});
+      }, 2000);
+});
 const port = process.env.PORT ||  3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

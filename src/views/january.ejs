@@ -52,8 +52,13 @@
 					<div id="main">
 						<div class="inner">
 							<h1 id="month">January</h1>
+							
 							<select id="dates-dropdown">
 								<option value=""> Select date </option>
+								<% dates.forEach(function(item) { %>
+									<option value=""><%= item %></option>
+								<%});%>
+				
 								</select>
 								
 							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
