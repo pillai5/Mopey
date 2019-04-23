@@ -95,9 +95,12 @@ app.get('/', (req,res)=> {
 
 app.get('/:month', (req,res) => {
     getDates(req.params.month);  
+    month = req.params.month;
+    month = month.charAt(0).toUpperCase() + month.slice(1);
+    console.log(month);
     setTimeout(function() {
         console.log('This runs after 2 seconds');
-        res.render(req.params.month, { names : 'sruthi', dates:dates, entry: ""});
+        res.render('generic', { month: month, names : 'sruthi', dates:dates, entry: ""});
       }, 2000);
 });
 
@@ -108,6 +111,11 @@ app.get('/:month/:mm/:dd/:yyyy', (req,res) => {
             res.render(req.params.month, { dates:dates, entry: entry});
       }, 2000);
 });
+
+app.post('/addentry', (req,res) => {
+    console.log(req.body.date);
+    console.log(req.body.entry);
+})
 const port = process.env.PORT ||  3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 

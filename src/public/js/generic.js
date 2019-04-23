@@ -39,6 +39,14 @@ var AddEntry = function() {
  // containerDiv.appendChild( btnSave );
     newEntry.value = '';
     nTaskPlace.appendChild( containerDiv, nTaskPlace.firstChild );
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/addentry", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+      date: entryDate,
+      entry: userEntry,
+    }));
 }
 
 
@@ -54,7 +62,8 @@ Date.prototype.toShortFormat = function() {
     var month_index = this.getMonth();
     var year = this.getFullYear();
     
-    return "" + day + "-" + month_names[month_index] + "-" + year;
+   
+    return "" + month_index + "/" + day + "/" + year;
 }
 
 var today = new Date();  // this gets the date
