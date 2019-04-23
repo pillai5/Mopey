@@ -20,21 +20,6 @@ mongoose.connect('mongodb://sruthip:mopeypass1@ds133166.mlab.com:33166/mopey')
 
 
 
-function createEntry(currdate, currentry) {
-    console.log('.userid: ' + auth.userid);
-    console.log('.date ' + currdate);
-    console.log('.entry: ' + currentry);
-    const newJournal= new Journal({
-    userId: auth.userid,
-    date: currdate,
-    entry: currentry
-});
-
-// newUser.save((err, user) => {
-// if (err) return console.error(err);
-// });
-}
-
 app.use( express.static(__dirname + '/public' ));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -95,7 +80,8 @@ app.get('/', (req,res)=> {
 
 
 app.get('/:month', (req,res) => {
-    getDates(req.params.month);  
+    getDates(req.params.month); 
+     
     month = req.params.month;
     month = month.charAt(0).toUpperCase() + month.slice(1);
    // console.log(month);
@@ -116,7 +102,14 @@ app.get('/:month/:mm/:dd/:yyyy', (req,res) => {
 
 app.post('/addentry', (req,res) => {
     console.log(req.body.date);
+    console.log(req.body.month);
     console.log(req.body.entry);
+    const newJournal= new Journal({
+        userId: auth.userid,
+        month: req.body.month,
+        date: req.body.date,
+        entry: req.body.entry
+    });
 })
 const port = process.env.PORT ||  3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));

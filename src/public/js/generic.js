@@ -45,6 +45,7 @@ var AddEntry = function() {
     xhr.send(JSON.stringify({
       date: entryDate,
       entry: userEntry,
+      month: month
     }));
 }
 var month_names =["January","Febraury","March",
