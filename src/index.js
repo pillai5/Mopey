@@ -51,7 +51,7 @@ async function getDates(month) {
 
     var mycollection = db.collection('journals');
     dates = []
-     mycollection.find({ month: month }, {date:1, _id:0}).forEach(function(err, doc) {
+     mycollection.find({ month: { $regex : new RegExp(month, "i") } }, {date:1, _id:0}).forEach(function(err, doc) {
             if (!doc) {
                 // we visited all docs in the collection
                 return;
@@ -77,8 +77,16 @@ app.get('/', (req,res)=> {
     //res.redirect('./routers/home');
 })
 
-app.get('/january', (req,res) => {
-    getDates('January');  
+app.get('/:month', (req,res) => {
+    getDates(req.params.month);  
+    setTimeout(function() {
+        console.log('This runs after 2 seconds');
+        res.render('january', { names : 'sruthi', dates:dates});
+      }, 2000);
+});
+
+app.get('/:month/:date', (req,res) => {
+    getEntries(month, date);  
     setTimeout(function() {
         console.log('This runs after 2 seconds');
         res.render('january', { names : 'sruthi', dates:dates});
