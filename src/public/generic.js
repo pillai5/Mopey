@@ -57,14 +57,18 @@ Date.prototype.toShortFormat = function() {
     return "" + day + "-" + month_names[month_index] + "-" + year;
 }
 
-
+var today = new Date();  // this gets the date
+   // showing today's format in DD-Mon-YY format
+var dd = String(today.getDate()).padStart(2, '0');    
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
 
 var newDropDown= function(){
    
 var date=document.getElementById('dates-dropdown');
 var newDate=document.createElement('option');
-var today = new Date();  // this gets the date
-   // showing today's format in DD-Mon-YY format
+
+
 console.log(today.toShortFormat());
 var entryDate=today.toShortFormat();  //this contains the date in DD-Mon-YY format
 console.log('the entrydate is '+entryDate)
