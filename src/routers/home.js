@@ -53,7 +53,6 @@ function createUser() {
         }
     })
 }
-    
 
 router.get('/', (req, res) => {
     //console.log('home: ' + path.join(__dirname, '../public','MainPage.html'));
