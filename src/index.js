@@ -59,7 +59,7 @@ async function getEntries(mm,dd,yyyy) {
                 return;
             }
             entry = doc.entry;
-            //console.log(doc.entry);
+            console.log("rgegre" + entry);
     //         // doc is a document in the collection
         });
    
@@ -84,7 +84,7 @@ app.get('/:month', (req,res) => {
      
     month = req.params.month;
     month = month.charAt(0).toUpperCase() + month.slice(1);
-   // console.log(month);
+   //console.log(month);
     setTimeout(function() {
         console.log('This runs after 2 seconds');
         res.render('generic', { month: month, names : 'sruthi', dates:dates, entry: ""});
@@ -97,10 +97,12 @@ app.get('/:month/:mm/:dd/:yyyy', (req,res) => {
     console.log(req.params.mm);
     console.log(req.params.dd);
     console.log(req.params.yyyy);
-    // setTimeout(function() {
-    //     console.log('This runs after 2 seconds');
-    //         res.render('generic', { dates:dates, entry: entry});
-    //   }, 2000);
+    
+    setTimeout(function() {
+        console.log("test: " +entry);
+        console.log('This runs after HELOEOEOEOEOEO seconds');
+            res.render('generic', { dates:dates, entry: entry});
+      }, 2000);
 });
 
 app.post('/addentry', (req,res) => {

@@ -81,11 +81,12 @@ select.onchange = function(){
     var selectedString = select.options[select.selectedIndex].value;
     //alert(selectedString);
     console.log('you are on' ,selectedString)
-    var xhr = new XMLHttpRequest();
-    var url = '/' + month + '/' + selectedString;
-    xhr.open("GET", url, true);
-    //xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send();
+   window.location.href=month+'/'+selectedString;
+    // var xhr = new XMLHttpRequest();
+    // var url = '/' + month + '/' + selectedString;
+    // xhr.open("GET", url, true);
+    // //xhr.setRequestHeader('Content-Type', 'application/json');
+    // xhr.send();
 }
 
 

@@ -9,8 +9,8 @@
 		<title id="title-month"><%= month %></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="http://localhost:3000/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="http://localhost:3000/assets/css/noscript.css" /></noscript>
 		
 	</head>
 	<body class="is-preload">
@@ -22,8 +22,8 @@
 						<div class="inner">
 
 							<!-- Logo -->
-								<a href="homepage.html" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Mopey</span>
+								<a href="http://localhost:3000/homepage.html" class="logo">
+									<span class="symbol"><img src="http://localhost:3000/images/logo.svg" alt="" /></span><span class="title">Mopey</span>
 								</a>
 
 							<!-- Nav -->
@@ -42,7 +42,7 @@
 						<ul>
 							<li><a href='/'>Home</a></li>
 							
-							<li><a href="elements.html">Analytics</a></li>
+							<li><a href="http://localhost:3000/elements.html">Analytics</a></li>
 						</ul>
 					</nav>
 
@@ -63,7 +63,7 @@
 									
 								</select>
 								
-							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+							
 						<!----<input id='search-text' type="text" placeholder="Today, my day was . . .">
 							<p id="add-entry"></p>
 							<input id="b2" type='button' onclick='addParagraphs()' value='Add Entry' /> -->
@@ -71,6 +71,9 @@
 								<input id="newEntry" type="text">
 								<button id="add-entry"> Add Entry </button>
 								<p id="need-paragraph"> </p>
+							</div>
+							<div>
+								<p> <%= entry %> </p> 
 							</div>
 							
 						
@@ -103,11 +106,11 @@
 
 		<!-- Scripts -->
 		
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="http://localhost:3000/assets/js/jquery.min.js"></script>
+			<script src="http://localhost:3000/assets/js/browser.min.js"></script>
+			<script src="http://localhost:3000/assets/js/breakpoints.min.js"></script>
+			<script src="http://localhost:3000/assets/js/util.js"></script>
+			<script src="http://localhost:3000/assets/js/main.js"></script>
 			<!---ADDING MY JS SCRIPT-->
 			<script src="js/generic.js"></script>
 
