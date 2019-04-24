@@ -104,11 +104,16 @@ app.post('/addentry', (req,res) => {
     console.log(req.body.date);
     console.log(req.body.month);
     console.log(req.body.entry);
+    console.log(auth.userid);
     const newJournal= new Journal({
         userId: auth.userid,
         month: req.body.month,
         date: req.body.date,
         entry: req.body.entry
+    });
+
+    newJournal.save((err, journal) => {
+        if (err) return console.error(err);
     });
 })
 const port = process.env.PORT ||  3000;
