@@ -56,11 +56,14 @@
 								var month= <%- JSON.stringify(month) %>;
 							</script>
 							<select id="dates-dropdown">
-								<option value=""> Select date </option>
+									
+								
 								<% dates.forEach(function(item) { %>
-									<option value=""><%= item %></option>
+									<option value="<%=item%>"><%= item %></option>
+									
+										
 								<%});%>
-				
+									
 								</select>
 								
 							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
@@ -70,6 +73,7 @@
 							<div id="addNew">
 								<input id="newEntry" type="text">
 								<button id="add-entry"> Add Entry </button>
+								<p id="need-paragraph"> </p>
 							</div>
 							
 						

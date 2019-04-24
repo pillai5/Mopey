@@ -6,38 +6,15 @@ var count = 0;
 var AddEntry = function () {
     var paragraph = document.createElement('p');
     var userEntry = newEntry.value; //this is the user's entry
-    //console.log(userEntry)
+    console.log(userEntry)
 
     paragraph.innerHTML = newEntry.value;
-    //EDIT STUFF
-    /* var editInput = document.createElement( 'input' );
-     editInput.style.display= 'none';
-     editInput.value = newEntry.value;
-    var btnEdit = document.createElement( 'button' );
-     btnEdit.innerHTML = 'Edit';
-     var btnSave = document.createElement( 'button' );
-     btnSave.innerHTML = 'Save';
-     btnSave.style.display= 'none';
-     btnEdit.addEventListener( 'click', function(){
-         editInput.style.display = 'inline-block';
-         paragraph.style.display = 'none';
-         btnSave.style.display = 'inline-block';
-         btnEdit.style.display = 'none';
-     });
-     btnSave.addEventListener( 'click',function(){
-         editInput.style.display = 'none';
-         paragraph.style.display = 'inline-block';
-         btnSave.style.display = 'none';
-         btnEdit.style.display = 'inline-block';
-         paragraph.innerHTML = editInput.value;    
-     });   */
-    var containerDiv = document.createElement('div');
-    containerDiv.appendChild(paragraph);
-    // containerDiv.appendChild( editInput );
-    //  containerDiv.appendChild( btnEdit );
-    // containerDiv.appendChild( btnSave );
-    newEntry.value = '';
-    // nTaskPlace.appendChild(containerDiv, nTaskPlace.firstChild);
+    
+    
+
+     var para = document.getElementById("need-paragraph");
+     para.appendChild(paragraph);
+     newEntry.innerHTML='';
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/addentry", true);
@@ -91,6 +68,10 @@ var newDropDown = function () {
     date.appendChild(newDate);
 }
 btn.addEventListener('click', AddEntry);
-btn.addEventListener('click', newDropDown);
+var e = document.getElementById("dates-dropdown");
+var strUser = e.options[e.selectedIndex].value;
+console.log("you are on ",strUser)
+//console.log(userEntry)
+//btn.addEventListener('click', newDropDown);
 
 
