@@ -70,7 +70,17 @@ var newDropDown = function () {
 btn.addEventListener('click', AddEntry);
 var e = document.getElementById("dates-dropdown");
 var strUser = e.options[e.selectedIndex].value;
-console.log("you are on ",strUser)
+console.log("disregard ",strUser)
+
+var select = document.getElementById("dates-dropdown");
+select.onchange = function(){
+    var selectedString = select.options[select.selectedIndex].value;
+    //alert(selectedString);
+    console.log('you are on' ,selectedString)
+}
+
+
+
 //console.log(userEntry)
 //btn.addEventListener('click', newDropDown);
 

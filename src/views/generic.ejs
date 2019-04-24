@@ -55,9 +55,10 @@
 							<script> 
 								var month= <%- JSON.stringify(month) %>;
 							</script>
+							
 							<select id="dates-dropdown">
 									
-								
+								<option value="">Select date </option> 
 								<% dates.forEach(function(item) { %>
 									<option value="<%=item%>"><%= item %></option>
 									
