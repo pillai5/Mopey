@@ -89,5 +89,3 @@ select.onchange = function(){
 
 //console.log(userEntry)
 //btn.addEventListener('click', newDropDown);
-
-
