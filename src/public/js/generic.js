@@ -81,7 +81,9 @@ select.onchange = function(){
     var selectedString = select.options[select.selectedIndex].value;
     //alert(selectedString);
     console.log('you are on' ,selectedString)
+    
 }
+
 
 
 
