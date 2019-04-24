@@ -1,4 +1,4 @@
-var newEntry = document.getElementById('newEntry');
+var newEntry = document.getElementById('addNew');
 var btn = document.getElementById('add-entry');
 var nTaskPlace = document.getElementById('main');
 var entryDate;
@@ -37,7 +37,7 @@ var AddEntry = function () {
     //  containerDiv.appendChild( btnEdit );
     // containerDiv.appendChild( btnSave );
     newEntry.value = '';
-    nTaskPlace.appendChild(containerDiv, nTaskPlace.firstChild);
+    // nTaskPlace.appendChild(containerDiv, nTaskPlace.firstChild);
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/addentry", true);
