@@ -94,10 +94,13 @@ app.get('/:month', (req,res) => {
 
 app.get('/:month/:mm/:dd/:yyyy', (req,res) => {
     getEntries(req.params.mm,req.params.dd, req.params.yyyy );  
-    setTimeout(function() {
-        console.log('This runs after 2 seconds');
-            res.render('generic', { dates:dates, entry: entry});
-      }, 2000);
+    console.log(req.params.mm);
+    console.log(req.params.dd);
+    console.log(req.params.yyyy);
+    // setTimeout(function() {
+    //     console.log('This runs after 2 seconds');
+    //         res.render('generic', { dates:dates, entry: entry});
+    //   }, 2000);
 });
 
 app.post('/addentry', (req,res) => {
