@@ -78,8 +78,9 @@ console.log("disregard ",strUser)
 
 var select = document.getElementById("dates-dropdown");
 select.onchange = function(){
-    var selectedString = select.options[select.selectedIndex].value;
-    //alert(selectedString);
+    var selectedString = select.options[select.selectedIndex].text;
+  window.location.href=month+"/"+selectedString;
+    alert(selectedString);
     console.log('you are on' ,selectedString)
     
 }
