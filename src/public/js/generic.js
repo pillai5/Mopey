@@ -1,8 +1,8 @@
-var newEntry = document.getElementById('addNew');
+var newEntry = document.getElementById('newEntry');
 var btn = document.getElementById('add-entry');
 var nTaskPlace = document.getElementById('main');
 var entryDate;
-var count = 0;
+var count = 0; 
 var AddEntry = function () {
     var paragraph = document.createElement('p');
     var userEntry = newEntry.value; //this is the user's entry
@@ -48,6 +48,7 @@ var AddEntry = function () {
         month: month
     }));
 }
+
 var month_names = ["January", "Febraury", "March",
     "April", "May", "June",
     "July", "August", "September",

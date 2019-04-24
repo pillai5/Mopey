@@ -96,7 +96,7 @@ app.get('/:month/:mm/:dd/:yyyy', (req,res) => {
     getEntries(req.params.mm,req.params.dd, req.params.yyyy );  
     setTimeout(function() {
         console.log('This runs after 2 seconds');
-            res.render(req.params.month, { dates:dates, entry: entry});
+            res.render('generic', { dates:dates, entry: entry});
       }, 2000);
 });
 
