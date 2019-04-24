@@ -73,5 +73,3 @@ var strUser = e.options[e.selectedIndex].value;
 console.log("you are on ",strUser)
 //console.log(userEntry)
 //btn.addEventListener('click', newDropDown);
-
-

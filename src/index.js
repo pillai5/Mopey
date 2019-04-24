@@ -112,9 +112,9 @@ app.post('/addentry', (req,res) => {
         entry: req.body.entry
     });
 
-    newJournal.save((err, journal) => {
-        if (err) return console.error(err);
-    });
+    // newJournal.save((err, journal) => {
+    //     if (err) return console.error(err);
+    // });
 })
 const port = process.env.PORT ||  3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
