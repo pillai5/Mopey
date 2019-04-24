@@ -82,7 +82,12 @@ select.onchange = function(){
   window.location.href=month+"/"+selectedString;
     alert(selectedString);
     console.log('you are on' ,selectedString)
-    
+   window.location.href=month+'/'+selectedString;
+    // var xhr = new XMLHttpRequest();
+    // var url = '/' + month + '/' + selectedString;
+    // xhr.open("GET", url, true);
+    // //xhr.setRequestHeader('Content-Type', 'application/json');
+    // xhr.send();
 }
 
 
