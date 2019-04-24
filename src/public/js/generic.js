@@ -54,7 +54,9 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0
 var yyyy = today.getFullYear();
 console.log('TESTING: ' + month); //THIS VARIABLE STORES THE CURRENT MONTH PAGE THE USER IS ON
 var pageMonth = month_names.indexOf(month) + 1;
-var currMonth = today.getMonth() + 1;
+var currMonth = today.getMonth() + 1; 
+console.log("curr month is" ,currMonth)
+console.log("page  is" ,pageMonth)
 //COMPARE pageindex to currmonth
 entryDate = today.toShortFormat();  //this contains the date in DD-Mon-YY format
 
@@ -67,7 +69,9 @@ var newDropDown = function () {
     newDate.innerHTML = entryDate;
     date.appendChild(newDate);
 }
+if(pageMonth==currMonth){
 btn.addEventListener('click', AddEntry);
+}
 var e = document.getElementById("dates-dropdown");
 var strUser = e.options[e.selectedIndex].value;
 console.log("disregard ",strUser)
