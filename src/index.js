@@ -141,19 +141,6 @@ app.post('/addentry', (req, res) => {
         newJournal.save((err, journal) => {
             if (err) return console.error(err);
         });
-
-       // res.redirect('/'+ req.body.month);
-       
-        // getDates(req.body.month);
-
-        // month = req.body.month;
-        // month = month.charAt(0).toUpperCase() + month.slice(1);
-        // //console.log(month);
-        // setTimeout(function () {
-        //     console.log('This should run after getting dates seconds');
-        //     res.render('generic', { month: month, names: 'sruthi', dates: dates, entry: "" });
-
-        // }, 2000);
     }
 })
 const port = process.env.PORT || 3000;
