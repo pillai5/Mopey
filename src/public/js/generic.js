@@ -99,12 +99,21 @@ select.onchange = function () {
     return selectedString;
 
 }
-
+var fullURL=window.location.href;
+var sub=fullURL.substring(fullURL.length-10,fullURL.length);
+console.log("curr month ",currMonth)
+if(!sub.includes("3000"))
+{
+    
 var displayDate = document.createElement('p');
+<<<<<<< HEAD
+displayDate.innerHTML=sub;
+=======
 displayDate.innerHTML = selectedString;
 console.log("selectedstring is", selectedString)
+>>>>>>> 4bfff874543aaac90673b09103646cad6aecc8d5
 document.getElementById('date-of-the-month').appendChild(displayDate)
-
+}
 
 //console.log(userEntry)
 //btn.addEventListener('click', newDropDown);
