@@ -27,6 +27,7 @@ function checkIfUserExists(userid, callback) {
         }
     });
 };
+
 function getCheck(check) {
     return check;
 }
