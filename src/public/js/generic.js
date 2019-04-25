@@ -70,7 +70,7 @@ var newDropDown = function () {
     newDate.innerHTML = entryDate;
     date.appendChild(newDate);
 }
-if(pageMonth==currMonth && count==0){
+if(pageMonth==currMonth){
     count=1;
 btn.addEventListener('click', AddEntry);
 btn.addEventListener('click',function refreshPage(){
@@ -82,18 +82,21 @@ var strUser = e.options[e.selectedIndex].value;
 console.log("disregard ",strUser)
 
 var select = document.getElementById("dates-dropdown");
+
 select.onchange = function(){
 
-    var selectedString = select.options[select.selectedIndex].text;
+   var selectedString = select.options[select.selectedIndex].text;
 //  window.location.href=month+"/"+selectedString;
    // alert(selectedString);
     console.log('you are on' ,selectedString)
    window.location.href= "http://localhost:3000/" + month+'/'+selectedString;
+   return selectedString;
     
 }
 
 var displayDate = document.createElement('p');
 displayDate.innerHTML=selectedString;
+console.log("selectedstring is", selectedString)
 document.getElementById('date-of-the-month').appendChild(displayDate)
 
 
