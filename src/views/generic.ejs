@@ -10,9 +10,12 @@
 	<title id="title-month"><%= month %></title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="http://localhost:3000/assets/css/main.css" />
+	<!-- <link rel="stylesheet" href="http://localhost:3000/assets/css/main.css" /> -->
+	<link rel="stylesheet" href="http://mopey.herokuapp.com/assets/css/main.css" />
+
 	<noscript>
 		<link rel="stylesheet" href="http://localhost:3000/assets/css/noscript.css" /></noscript>
+		<!-- <link rel="stylesheet" href="http://mopey.herokuapp.com/assets/css/noscript.css" /></noscript> -->
 
 </head>
 
@@ -25,10 +28,14 @@
 			<div class="inner">
 
 				<!-- Logo -->
-				<a href="http://localhost:3000/homepage.html" class="logo">
-					<span class="symbol"><img src="http://localhost:3000/images/mopey-icon.png" alt="" /></span><span
+				<a href="http://mopey.herokuapp.com/homepage.html" class="logo">
+					<span class="symbol"><img src="http://mopey.herokuapp.com/images/mopey-icon.png" alt="" /></span><span
 						class="title"><%= name%>'s Mopey</span>
 				</a>
+				<!-- <a href="http://localhost:3000/homepage.html" class="logo">
+					<span class="symbol"><img src="http://localhost:3000/images/mopey-icon.png" alt="" /></span><span
+						class="title"><%= name%>'s Mopey</span>
+				</a> -->
 
 				<!-- Nav -->
 				<nav>
@@ -44,8 +51,9 @@
 		<nav id="menu">
 			<h2>Menu</h2>
 			<ul>
-				<li><a href='http://localhost:3000/'>Home</a></li>
-				<li><a href="">Analytics</a></li>
+				<!-- <li><a href='http://localhost:3000/'>Home</a></li> -->
+				<li><a href='http://mopey.herokuapp.com/'>Home</a></li>
+				<li><a href="http://mopey.herokuapp.com/analytics">Analytics</a></li>
 				<li><a href="http://localhost:3000/january">January</a></li>
 				<li><a href="http://localhost:3000/february">February</a></li>
 				<li><a href="http://localhost:3000/march">March</a></li>
@@ -72,14 +80,11 @@
 				</script>
 
 				<select id="dates-dropdown">
-
 					<option value="">Select date </option>
 					<% dates.forEach(function(item) { %>
 					<option value="<%=item%>"><%= item %></option>
 					<%});%>
-
 				</select>
-
 
 				<!----<input id='search-text' type="text" placeholder="Today, my day was . . .">
 							<p id="add-entry"></p>
@@ -99,14 +104,21 @@
 			</div>
 
 			<!-- Scripts -->
+			<script src="http://mopey.herokuapp.com/assets/js/jquery.min.js"></script>
+			<script src="http://mopey.herokuapp.com/assets/js/browser.min.js"></script>
+			<script src="http://mopey.herokuapp.com/assets/js/breakpoints.min.js"></script>
+			<script src="http://mopey.herokuapp.com/assets/js/util.js"></script>
+			<script src="http://mopey.herokuapp.com/assets/js/main.js"></script>
+			<!---ADDING MY JS SCRIPT-->
+			<script src="http://mopey.herokuapp.com/js/generic.js"></script>
 
-			<script src="http://localhost:3000/assets/js/jquery.min.js"></script>
+			<!-- <script src="http://localhost:3000/assets/js/jquery.min.js"></script>
 			<script src="http://localhost:3000/assets/js/browser.min.js"></script>
 			<script src="http://localhost:3000/assets/js/breakpoints.min.js"></script>
 			<script src="http://localhost:3000/assets/js/util.js"></script>
 			<script src="http://localhost:3000/assets/js/main.js"></script>
 			<!---ADDING MY JS SCRIPT-->
-			<script src="http://localhost:3000/js/generic.js"></script>
+			<script src="http://localhost:3000/js/generic.js"></script> -->
 
 
 

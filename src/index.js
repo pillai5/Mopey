@@ -33,7 +33,7 @@ app.use('/login', login);
 
 async function getDates(month) {
     //console.log(month);
-    console.log('current dates: ' + dates);
+    //console.log('current dates: ' + dates);
     var mycollection = db.collection('journals');
     dates = []
     // console.log(auth.userid);
@@ -83,11 +83,12 @@ app.get('/', (req, res) => {
 app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.get('/:month', (req, res) => {
+    console.log('month right now is: ' + req.params.month);
+    console.log('redirected');
     if (!auth.username) {
         res.redirect('./login');
     }
     else {
-        console.log('redirected');
         dates = [];
         getDates(req.params.month);
 
@@ -96,7 +97,7 @@ app.get('/:month', (req, res) => {
         //console.log(month);
         setTimeout(function () {
             console.log('This runs after getting dates seconds');
-            console.log("right now dates: " + dates);
+            console.log("MONTH RIGHT NOW: " + month);
             res.render('generic', { month: month, name: auth.displayName, dates: dates, entry: "" });
         }, 1000);
     }
