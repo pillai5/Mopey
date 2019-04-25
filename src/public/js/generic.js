@@ -77,8 +77,8 @@ if (pageMonth == currMonth) {
     btn.addEventListener('click', AddEntry);
     btn.addEventListener('click', function refreshPage() {
         console.log('redirect to : ' + month);
-        // window.location.href = "https://mopey.herokuapp.com/" + month + "";
-        window.location.href = "http://localhost:3000/" + month + "";  //to refresh page on click
+        window.location.href = "https://mopey.herokuapp.com/" + month + "";
+        // window.location.href = "http://localhost:3000/" + month + "";  //to refresh page on click
     })
 }
 var e = document.getElementById("dates-dropdown");
@@ -92,8 +92,8 @@ select.onchange = function () {
     //  window.location.href=month+"/"+selectedString;
     // alert(selectedString);
     console.log('you are on', selectedString)
-    window.location.href = "http://localhost:3000/" + month + '/' + selectedString;
-    // window.location.href = "https://mopey.herokuapp.com/" + month + '/' + selectedString;
+    // window.location.href = "http://localhost:3000/" + month + '/' + selectedString;
+    window.location.href = "https://mopey.herokuapp.com/" + month + '/' + selectedString;
 
     return selectedString;
 

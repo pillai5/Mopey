@@ -156,7 +156,6 @@ app.post('/addentry', (req, res) => {
         });
         found = 0;
         //getDates(req.params.month);
-
         checkIfDateExists(req.body.date);
         setTimeout(function () {
             console.log('check:' + found);
