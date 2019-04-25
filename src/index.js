@@ -28,8 +28,24 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/auth/google', auth);
 app.use('/home', home);
 app.use('/login', login);
+var checker = "";
+var found = 0;
+function checkIfDateExists(check, callback) {
+    var mycollection = db.collection('journals');
+    mycollection.find({ id: auth.userid }, { date: 1, _id: 0, id: 1 }).forEach(function (err, doc) {
+        if (!doc) {
+            // we visited all docs in the collection
+            return;
+        }
+        console.log(doc.date)
+        if (doc.date === check) {
+            console.log("EQUAL");
+            found = 1;
+            return;
+        }
+    });
 
-
+};
 
 async function getDates(month) {
     //console.log(month);
@@ -37,7 +53,7 @@ async function getDates(month) {
     var mycollection = db.collection('journals');
     dates = []
     // console.log(auth.userid);
-    mycollection.find({ month: { $regex: new RegExp(month, "i")}, id: auth.userid}, { date: 1, _id: 0, id: 1}).forEach(function (err, doc) {
+    mycollection.find({ month: { $regex: new RegExp(month, "i") }, id: auth.userid }, { date: 1, _id: 0, id: 1 }).forEach(function (err, doc) {
         if (!doc) {
             // we visited all docs in the collection
             return;
@@ -62,7 +78,6 @@ async function getEntries(mm, dd, yyyy) {
         }
         entry = doc.entry;
         //console.log("rgegre" + entry);
-        //         // doc is a document in the collection
     });
 
 };
@@ -108,6 +123,7 @@ app.get('/:month/:mm/:dd/:yyyy', (req, res) => {
         res.redirect('./login');
     }
     else {
+
         getEntries(req.params.mm, req.params.dd, req.params.yyyy);
         console.log(req.params.mm);
         console.log(req.params.dd);
@@ -116,7 +132,7 @@ app.get('/:month/:mm/:dd/:yyyy', (req, res) => {
         setTimeout(function () {
             //console.log("test: " + entry);
             console.log('This runs after 1 seconds');
-            res.render('generic', {  month: month, dates: dates, name: auth.displayName, entry: entry });
+            res.render('generic', { month: month, dates: dates, name: auth.displayName, entry: entry });
         }, 1000);
     }
 });
@@ -138,12 +154,26 @@ app.post('/addentry', (req, res) => {
             date: req.body.date,
             entry: req.body.entry
         });
-        console.log('adding to db')
-        newJournal.save((err, journal) => {
-            if (err) return console.error(err);
-        });
+        found = 0;
+        //getDates(req.params.month);
+
+        checkIfDateExists(req.body.date);
+        setTimeout(function () {
+            console.log('check:' + found);
+            if (found === 1) {
+                console.log('this date already exists');
+            }
+            else if (found === 0) {
+                console.log('adding to db')
+                newJournal.save((err, journal) => {
+                    if (err) return console.error(err);
+                });
+            }
+        }, 2000);
     }
-})
+});
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
