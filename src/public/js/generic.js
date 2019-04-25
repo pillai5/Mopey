@@ -101,12 +101,12 @@ select.onchange = function () {
 var fullURL=window.location.href;
 var sub=fullURL.substring(fullURL.length-10,fullURL.length);
 console.log("curr month ",currMonth)
-if(!sub.includes("3000"))
+if(sub.includes("2019"))
 {
     
 var displayDate = document.createElement('p');
-displayDate.innerHTML = selectedString;
-console.log("selectedstring is", selectedString)
+displayDate.innerHTML = sub;
+//console.log("selectedstring is", selectedString)
 document.getElementById('date-of-the-month').appendChild(displayDate)
 }
 
