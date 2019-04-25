@@ -71,6 +71,9 @@ var newDropDown = function () {
 }
 if(pageMonth==currMonth){
 btn.addEventListener('click', AddEntry);
+btn.addEventListener('click',function refreshPage(){
+    window.location.reload();     //to refresh page on click
+})
 }
 var e = document.getElementById("dates-dropdown");
 var strUser = e.options[e.selectedIndex].value;
