@@ -106,12 +106,8 @@ if(!sub.includes("3000"))
 {
     
 var displayDate = document.createElement('p');
-<<<<<<< HEAD
-displayDate.innerHTML=sub;
-=======
 displayDate.innerHTML = selectedString;
 console.log("selectedstring is", selectedString)
->>>>>>> 4bfff874543aaac90673b09103646cad6aecc8d5
 document.getElementById('date-of-the-month').appendChild(displayDate)
 }
 
