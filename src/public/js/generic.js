@@ -72,7 +72,7 @@ var newDropDown = function () {
 if(pageMonth==currMonth){
 btn.addEventListener('click', AddEntry);
 btn.addEventListener('click',function refreshPage(){
-    window.location.reload();     //to refresh page on click
+   window.location.href = "http://localhost:3000/" + month+"" ;  //to refresh page on click
 })
 }
 var e = document.getElementById("dates-dropdown");

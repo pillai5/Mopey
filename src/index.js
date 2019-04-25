@@ -32,7 +32,8 @@ app.use('/login', login);
 
 
 async function getDates(month) {
-    console.log(month);
+    //console.log(month);
+    console.log('current dates: ' + dates);
     var mycollection = db.collection('journals');
     dates = []
     // console.log(auth.userid);
@@ -42,7 +43,7 @@ async function getDates(month) {
             return;
         }
         dates.push(doc.date);
-        // console.log(doc.date);
+        console.log("pushing: " + doc.date);
         // console.log(doc.id);
         //doc is a document in the collection
     });
@@ -86,15 +87,17 @@ app.get('/:month', (req, res) => {
         res.redirect('./login');
     }
     else {
+        console.log('redirected');
+        dates = [];
         getDates(req.params.month);
 
         month = req.params.month;
         month = month.charAt(0).toUpperCase() + month.slice(1);
         //console.log(month);
         setTimeout(function () {
-            console.log('This runs after 1 seconds');
+            console.log('This runs after getting dates seconds');
+            console.log("right now dates: " + dates);
             res.render('generic', { month: month, names: 'sruthi', dates: dates, entry: "" });
-
         }, 1000);
     }
 });
@@ -138,8 +141,19 @@ app.post('/addentry', (req, res) => {
         newJournal.save((err, journal) => {
             if (err) return console.error(err);
         });
-        getDates(req.body.month);
-        res.render('generic', { month: month, dates: dates, entry: "" });
+
+       // res.redirect('/'+ req.body.month);
+       
+        // getDates(req.body.month);
+
+        // month = req.body.month;
+        // month = month.charAt(0).toUpperCase() + month.slice(1);
+        // //console.log(month);
+        // setTimeout(function () {
+        //     console.log('This should run after getting dates seconds');
+        //     res.render('generic', { month: month, names: 'sruthi', dates: dates, entry: "" });
+
+        // }, 2000);
     }
 })
 const port = process.env.PORT || 3000;
