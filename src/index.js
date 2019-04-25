@@ -97,7 +97,7 @@ app.get('/:month', (req, res) => {
         setTimeout(function () {
             console.log('This runs after getting dates seconds');
             console.log("right now dates: " + dates);
-            res.render('generic', { month: month, names: 'sruthi', dates: dates, entry: "" });
+            res.render('generic', { month: month, name: auth.displayName, dates: dates, entry: "" });
         }, 1000);
     }
 });
@@ -115,7 +115,7 @@ app.get('/:month/:mm/:dd/:yyyy', (req, res) => {
         setTimeout(function () {
             //console.log("test: " + entry);
             console.log('This runs after 1 seconds');
-            res.render('generic', { dates: dates, entry: entry });
+            res.render('generic', {  month: month, dates: dates, name: auth.displayName, entry: entry });
         }, 1000);
     }
 });
