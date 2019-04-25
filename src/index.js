@@ -119,6 +119,7 @@ app.get('/:month', (req, res) => {
 });
 
 app.get('/:month/:mm/:dd/:yyyy', (req, res) => {
+    console.log('redirected to entry page')
     if (!auth.username) {
         res.redirect('./login');
     }
@@ -161,6 +162,7 @@ app.post('/addentry', (req, res) => {
             console.log('check:' + found);
             if (found === 1) {
                 console.log('this date already exists');
+                entry = "";
             }
             else if (found === 0) {
                 console.log('adding to db')
