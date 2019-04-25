@@ -70,14 +70,15 @@ var newDropDown = function () {
 }
 console.log("page Month: " + pageMonth);
 console.log("currMontj : " + currMonth);
+
 if (pageMonth == currMonth) {
     count = 1;
     console.log('entered ');
     btn.addEventListener('click', AddEntry);
     btn.addEventListener('click', function refreshPage() {
         console.log('redirect to : ' + month);
-        window.location.href = "https://mopey.herokuapp.com/" + month + ""; 
-        //window.location.href = "http://localhost:3000/" + month + "";  //to refresh page on click
+        window.location.href = "https://mopey.herokuapp.com/" + month + "";
+        // window.location.href = "http://localhost:3000/" + month + "";  //to refresh page on click
     })
 }
 var e = document.getElementById("dates-dropdown");
@@ -87,23 +88,27 @@ var strUser = e.options[e.selectedIndex].value;
 var select = document.getElementById("dates-dropdown");
 var selectedString;
 select.onchange = function () {
-
     selectedString = select.options[select.selectedIndex].text;
     //  window.location.href=month+"/"+selectedString;
     // alert(selectedString);
     console.log('you are on', selectedString)
-    //window.location.href = "http://localhost:3000/" + month + '/' + selectedString;
+    // window.location.href = "http://localhost:3000/" + month + '/' + selectedString;
     window.location.href = "https://mopey.herokuapp.com/" + month + '/' + selectedString;
-    
+
     return selectedString;
 
 }
-
+var fullURL=window.location.href;
+var sub=fullURL.substring(fullURL.length-10,fullURL.length);
+console.log("curr month ",currMonth)
+if(sub.includes("2019"))
+{
+    
 var displayDate = document.createElement('p');
-displayDate.innerHTML = selectedString;
-console.log("selectedstring is", selectedString)
+displayDate.innerHTML = sub;
+//console.log("selectedstring is", selectedString)
 document.getElementById('date-of-the-month').appendChild(displayDate)
-
+}
 
 //console.log(userEntry)
 //btn.addEventListener('click', newDropDown);
