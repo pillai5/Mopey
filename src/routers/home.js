@@ -15,15 +15,15 @@ mongoose.connect('mongodb://sruthip:mopeypass1@ds133166.mlab.com:33166/mopey')
 router.use(express.static(__dirname + '/public'));
 
 function checkIfUserExists(userid, callback) {
-        User.find({ userId: userid }, function(err,user) {
+    User.find({ userId: userid }, function (err, user) {
         if (err) {
             throw err;
         }
-        if (user.length===0) {           
+        if (user.length === 0) {
             callback(0);
         }
         if (user.length > 0) {
-            callback(1); 
+            callback(1);
         }
     });
 };
@@ -39,32 +39,37 @@ function createUser() {
         displayName: auth.displayName,
 
     });
-    const yeet = checkIfUserExists(auth.userid, function(check) {
+    const yeet = checkIfUserExists(auth.userid, function (check) {
         console.log('check:' + check);
-        if (check===1) {
+        if (check === 1) {
             console.log('this user already exists');
         }
-        if (check===0) {
+        if (check === 0) {
             //console.log('adding to database');
             newUser.save((err, user) => {
                 if (err) return console.error(err);
             });
-    
+
         }
     })
 }
 
 router.get('/', (req, res) => {
     //console.log('home: ' + path.join(__dirname, '../public','MainPage.html'));
-    res.sendFile(path.join(__dirname, '../public', 'homepage.html'))
-    console.log('Username: ' + auth.username);
-    console.log('Userid: ' + auth.userid);
-    createUser();
+    if (!auth.username) {
+        res.redirect('./login');
+    }
+    else {
+        res.sendFile(path.join(__dirname, '../public', 'homepage.html'))
+        console.log('Username: ' + auth.username);
+        console.log('Userid: ' + auth.userid);
+        createUser();
+    }
 })
 
-router.get('/all',(req, res) => {
+router.get('/all', (req, res) => {
     //console.log('home: ' + path.join(__dirname, '../public','MainPage.html'));
-    User.find({},function(err, users) {
+    User.find({}, function (err, users) {
         if (err) throw err;
         res.json(users);
     });
