@@ -36,12 +36,12 @@ if __name__ == '__main__':
                 analysis=analyzer.tone({'text': text}, content_type='application/json').get_result()
                 for i in range(len(analysis['document_tone']['tones'])):
                     current_tone=str(analysis['document_tone']['tones'][i]['tone_name'])
-                    #print("TONE "+str(i)+": "+current_tone)
+                    print("TONE "+str(i)+": "+current_tone)
                     for t in range(len(tone_names)):
                         if current_tone==tone_names[t]:
                             d.tones[t]+=1
                 if len(analysis['document_tone']['tones'])==0:
-                    #print("TONE 0: Neutral")
+                    print("TONE 0: Neutral")
                     d.tones[4]+=1
                 #print(type(analysis['document_tone']['tones']))
                 #print(json.dumps(analysis,indent=2))
@@ -58,9 +58,27 @@ if __name__ == '__main__':
     for d in dates:
         if np.asarray(d.tones).any()>0:
             chart1.add(d.month, d.tones)
+    chart1.render_to_file('chart1.svg')
 
-    chart1.render_to_file('chart.svg')
-
-    chart2=pygal.Pie(style=mystyle)
+    chart2=pygal.Pie(inner_radius=.4, style=mystyle)
     chart2.title="Mood Frequency Overall"
+    tone_sum=[0,0,0,0,0,0,0,0]
+    for t in range(len(tone_names)):
+        for d in dates:
+            tone_sum[t]+=d.tones[t]
+    #print(tone_sum)
+    for ts in range(len(tone_sum)):
+        chart2.add(tone_names[ts],tone_sum[ts])
+    chart2.render_to_file("chart2.svg")
+
+    chart3 = pygal.Pie(style=mystyle)
+    chart3.title = "Mood Frequency Overall"
+    for d in dates:
+        if np.asarray(d.tones).any()>0:
+            tone_list=[]
+            for t in range(len(d.tones)):
+                tone_list.append({'value':d.tones[t],'label':d.tone_names[t]})
+            #print("TONE DICT")
+            chart3.add(d.month, tone_list)
+    chart3.render_to_file("chart3.svg")
 

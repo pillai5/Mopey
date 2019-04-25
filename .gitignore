@@ -2,3 +2,9 @@
 node_modules
 .idea/workspace.xml
 src/__pycache__/monthdata.cpython-37.pyc
+.idea/misc.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/libraries/R_User_Library.xml
+.idea/modules.xml
+.idea/Mopey.iml
+.idea/vcs.xml
