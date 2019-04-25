@@ -106,8 +106,8 @@ if(sub.includes("2019"))
 {
     
 var displayDate = document.createElement('p');
-displayDate.innerHTML = selectedString;
-console.log("selectedstring is", selectedString)
+displayDate.innerHTML = sub;
+//console.log("selectedstring is", selectedString)
 document.getElementById('date-of-the-month').appendChild(displayDate)
 }
 
