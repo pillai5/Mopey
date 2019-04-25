@@ -5,100 +5,101 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title id="title-month"><%= month %></title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="http://localhost:3000/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="http://localhost:3000/assets/css/noscript.css" /></noscript>
-		
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+<head>
+	<title id="title-month"><%= month %></title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="http://localhost:3000/assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="http://localhost:3000/assets/css/noscript.css" /></noscript>
 
-							<!-- Logo -->
-								<a href="http://localhost:3000/homepage.html" class="logo">
-									<span class="symbol"><img src="http://localhost:3000/images/mopey-icon.png" alt="" /></span><span class="title">Mopey</span>
-								</a>
+</head>
 
-							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-						</div>
-					</header>
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
 
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href='http://localhost:3000/'>Home</a></li>
-							<li><a href="">Analytics</a></li>
-							<li><a href="http://localhost:3000/january">January</a></li>
-							<li><a href="http://localhost:3000/february">February</a></li>
-							<li><a href="http://localhost:3000/march">March</a></li>
-							<li><a href="http://localhost:3000/april">April</a></li>
-							<li><a href="http://localhost:3000/may">May</a></li>
-							<li><a href="http://localhost:3000/june">June</a></li>
-							<li><a href="http://localhost:3000/july">July</a></li>
-							<li><a href="http://localhost:3000/august">August</a></li>
-							<li><a href="http://localhost:3000/september">Septemeber</a></li>
-							<li><a href="http://localhost:3000/october">October</a></li>
-							<li><a href="http://localhost:3000/novemeber">November</a></li>
-							<li><a href="http://localhost:3000/december">December</a></li>
-							<li><a href="http://localhost:3000/logout">Logout</a></li>
-						</ul>
-					</nav>
+				<!-- Logo -->
+				<a href="http://localhost:3000/homepage.html" class="logo">
+					<span class="symbol"><img src="http://localhost:3000/images/mopey-icon.png" alt="" /></span><span
+						class="title">Mopey</span>
+				</a>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<h1 id="month"><%= month%></h1>
-							<h2 id="date-of-the-month"> </h2>
-							<script> 
-								var month= <%- JSON.stringify(month) %>;
-							</script>
-							
-							<select id="dates-dropdown">
-									
-								<option value="">Select date </option> 
-								<% dates.forEach(function(item) { %>
-									<option value="<%=item%>"><%= item %></option>
-									<%});%>
-									
-								</select>
-								
-							
-						<!----<input id='search-text' type="text" placeholder="Today, my day was . . .">
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href='http://localhost:3000/'>Home</a></li>
+				<li><a href="">Analytics</a></li>
+				<li><a href="http://localhost:3000/january">January</a></li>
+				<li><a href="http://localhost:3000/february">February</a></li>
+				<li><a href="http://localhost:3000/march">March</a></li>
+				<li><a href="http://localhost:3000/april">April</a></li>
+				<li><a href="http://localhost:3000/may">May</a></li>
+				<li><a href="http://localhost:3000/june">June</a></li>
+				<li><a href="http://localhost:3000/july">July</a></li>
+				<li><a href="http://localhost:3000/august">August</a></li>
+				<li><a href="http://localhost:3000/september">Septemeber</a></li>
+				<li><a href="http://localhost:3000/october">October</a></li>
+				<li><a href="http://localhost:3000/novemeber">November</a></li>
+				<li><a href="http://localhost:3000/december">December</a></li>
+				<li><a href="http://localhost:3000/logout">Logout</a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1 id="month"><%= month%></h1>
+				<h2 id="date-of-the-month"> </h2>
+				<script>
+					var month = <% - JSON.stringify(month) %>;
+				</script>
+
+				<select id="dates-dropdown">
+
+					<option value="">Select date </option>
+					<% dates.forEach(function(item) { %>
+					<option value="<%=item%>"><%= item %></option>
+					<%});%>
+
+				</select>
+
+
+				<!----<input id='search-text' type="text" placeholder="Today, my day was . . .">
 							<p id="add-entry"></p>
 							<input id="b2" type='button' onclick='addParagraphs()' value='Add Entry' /> -->
-							<div id="addNew">
-								<input id="newEntry" type="text">
-								<button id="add-entry"> Add Entry </button>
-								<p> </p>
-								<p> </p>
-								<div class=boxed>
-								<p id="need-paragraph"><%= entry %> </p>
-								</div>
-						
-							
-						
+				<div id="addNew">
+					<input id="newEntry" type="text">
+					<button id="add-entry"> Add Entry </button>
+					<p> </p>
+					<p> </p>
+					<div class=boxed>
+						<p id="need-paragraph"><%= entry %> </p>
 					</div>
+				</div>
 
-				
+
 
 			</div>
 
-		<!-- Scripts -->
-		
+			<!-- Scripts -->
+
 			<script src="http://localhost:3000/assets/js/jquery.min.js"></script>
 			<script src="http://localhost:3000/assets/js/browser.min.js"></script>
 			<script src="http://localhost:3000/assets/js/breakpoints.min.js"></script>
@@ -107,7 +108,8 @@
 			<!---ADDING MY JS SCRIPT-->
 			<script src="http://localhost:3000/js/generic.js"></script>
 
-		
 
-	</body>
+
+</body>
+
 </html>
