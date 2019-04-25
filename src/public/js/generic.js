@@ -70,7 +70,8 @@ var newDropDown = function () {
     newDate.innerHTML = entryDate;
     date.appendChild(newDate);
 }
-if(pageMonth==currMonth){
+if(pageMonth==currMonth && count==0){
+    count=1;
 btn.addEventListener('click', AddEntry);
 btn.addEventListener('click',function refreshPage(){
    window.location.href = "http://localhost:3000/" + month+"" ;  //to refresh page on click
@@ -88,18 +89,12 @@ select.onchange = function(){
    // alert(selectedString);
     console.log('you are on' ,selectedString)
    window.location.href= "http://localhost:3000/" + month+'/'+selectedString;
-    // var xhr = new XMLHttpRequest();
-    // var url = '/' + month + '/' + selectedString;
-    // xhr.open("GET", url, true);
-    // //xhr.setRequestHeader('Content-Type', 'application/json');
-    // xhr.send();
+    
+}
+
 var displayDate = document.createElement('p');
 displayDate.innerHTML=selectedString;
 document.getElementById('date-of-the-month').appendChild(displayDate)
-
-}
-
-
 
 
 //console.log(userEntry)
