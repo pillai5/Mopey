@@ -54,14 +54,14 @@ async function getEntries(mm, dd, yyyy) {
     entry = "";
     var str = "";
     var date = str.concat(mm + '/' + dd + '/' + yyyy);
-    console.log(date);
+    //console.log(date);
     mycollection.find({ date: date, id: auth.userid }, { entry: 1, _id: 0 }).forEach(function (err, doc) {
         if (!doc) {
             // we visited all docs in the collection
             return;
         }
         entry = doc.entry;
-        console.log("rgegre" + entry);
+        //console.log("rgegre" + entry);
         //         // doc is a document in the collection
     });
 
@@ -92,10 +92,10 @@ app.get('/:month', (req, res) => {
         month = month.charAt(0).toUpperCase() + month.slice(1);
         //console.log(month);
         setTimeout(function () {
-            console.log('This runs after 2 seconds');
+            console.log('This runs after 1 seconds');
             res.render('generic', { month: month, names: 'sruthi', dates: dates, entry: "" });
 
-        }, 2000);
+        }, 1000);
     }
 });
 
@@ -110,10 +110,10 @@ app.get('/:month/:mm/:dd/:yyyy', (req, res) => {
         console.log(req.params.yyyy);
 
         setTimeout(function () {
-            console.log("test: " + entry);
-            console.log('This runs after HELOEOEOEOEOEO seconds');
+            //console.log("test: " + entry);
+            console.log('This runs after 1 seconds');
             res.render('generic', { dates: dates, entry: entry });
-        }, 2000);
+        }, 1000);
     }
 });
 
