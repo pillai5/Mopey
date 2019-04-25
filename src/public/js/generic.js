@@ -60,6 +60,7 @@ console.log("page  is" ,pageMonth)
 //COMPARE pageindex to currmonth
 entryDate = today.toShortFormat();  //this contains the date in DD-Mon-YY format
 
+
 var newDropDown = function () {
 
     var date = document.getElementById('dates-dropdown');
@@ -81,6 +82,7 @@ console.log("disregard ",strUser)
 
 var select = document.getElementById("dates-dropdown");
 select.onchange = function(){
+
     var selectedString = select.options[select.selectedIndex].text;
 //  window.location.href=month+"/"+selectedString;
    // alert(selectedString);
@@ -91,6 +93,10 @@ select.onchange = function(){
     // xhr.open("GET", url, true);
     // //xhr.setRequestHeader('Content-Type', 'application/json');
     // xhr.send();
+var displayDate = document.createElement('p');
+displayDate.innerHTML=selectedString;
+document.getElementById('date-of-the-month').appendChild(displayDate)
+
 }
 
 
