@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const users = require('./routers/user')
 const login = require('./routers/login')
 const home = require('./routers/home');
 const mongoose = require('mongoose');
@@ -80,6 +79,7 @@ app.get('/', (req, res) => {
     //res.redirect('./routers/home');
 })
 
+app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.get('/:month', (req, res) => {
     if (!auth.username) {
@@ -117,6 +117,8 @@ app.get('/:month/:mm/:dd/:yyyy', (req, res) => {
     }
 });
 
+
+
 app.post('/addentry', (req, res) => {
     if (!auth.username) {
         res.redirect('./login');
@@ -132,10 +134,12 @@ app.post('/addentry', (req, res) => {
             date: req.body.date,
             entry: req.body.entry
         });
-
-        // newJournal.save((err, journal) => {
-        //     if (err) return console.error(err);
-        // });
+        console.log('adding to db')
+        newJournal.save((err, journal) => {
+            if (err) return console.error(err);
+        });
+        getDates(req.body.month);
+        res.render('generic', { month: month, dates: dates, entry: "" });
     }
 })
 const port = process.env.PORT || 3000;
