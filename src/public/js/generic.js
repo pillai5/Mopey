@@ -76,7 +76,7 @@ if (pageMonth == currMonth) {
     btn.addEventListener('click', AddEntry);
     btn.addEventListener('click', function refreshPage() {
         console.log('redirect to : ' + month);
-        window.location.href = "http://mopey.herokuapp.com/" + month + ""; 
+        window.location.href = "https://mopey.herokuapp.com/" + month + ""; 
         //window.location.href = "http://localhost:3000/" + month + "";  //to refresh page on click
     })
 }
@@ -93,7 +93,7 @@ select.onchange = function () {
     // alert(selectedString);
     console.log('you are on', selectedString)
     //window.location.href = "http://localhost:3000/" + month + '/' + selectedString;
-    window.location.href = "http://mopey.herokuapp.com/" + month + '/' + selectedString;
+    window.location.href = "https://mopey.herokuapp.com/" + month + '/' + selectedString;
     
     return selectedString;
 

@@ -12,7 +12,7 @@ passport.use(new GoogleStrategy({
     clientID: '861693328919-d85bbtdgm0vmu0gn5ubdubm24480qd69.apps.googleusercontent.com',
     clientSecret: '9yQcV5YyVhO9GBN9S1ZNe4G-',
     // callbackURL: 'http://localhost:3000/auth/google/callback'
-    callbackURL: 'http://mopey.herokuapp.com/auth/google/callback'
+    callbackURL: 'https://mopey.herokuapp.com/auth/google/callback'
 
 },
 (token, refreshToken, profile, done) => {
