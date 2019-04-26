@@ -39,7 +39,8 @@ ol, ul {
 }
 .boxed {
 	border: 1px solid gray;
-	background-color: #ffddcc
+	background-color: #ffddcc;
+	background-image: url(../../images/old-paper-lined.jpg)
 }
 blockquote, q {
 	quotes: none;
