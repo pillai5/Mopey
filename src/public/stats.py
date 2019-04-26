@@ -47,7 +47,6 @@ if __name__ == '__main__':
                 #print(json.dumps(analysis,indent=2))
                 #print(analysis['document_tone']['tones'])
                 #print(d.tones)
-
     #plot graphs
 
     mystyle = Style(font_family='googlefont:Raleway')
